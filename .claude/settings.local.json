@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(type:*)",
+      "Bash(mkdir:*)",
+      "Bash(xcopy:*)",
+      "Bash(robocopy:*)",
+      "Bash(copy:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git config:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(mv:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(git credential-manager:*)",
+      "Bash(echo:*)",
+      "WebFetch(domain:legacy.curseforge.com)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(gh release create:*)",
+      "Bash(ls:*)",
+      "Bash(git rm:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(git tag:*)",
+      "Bash(touch:*)"
+    ],
+    "deny": []
+  }
+}
