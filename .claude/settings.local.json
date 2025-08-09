@@ -53,7 +53,9 @@
       "Bash(npm install:*)",
       "Bash(ccr:*)",
       "Bash(magick:*)",
-      "Bash(del \"C:\\Users\\JosephGettings\\BLU\\interface\\panels\\about.lua\")"
+      "Bash(del \"C:\\Users\\JosephGettings\\BLU\\interface\\panels\\about.lua\")",
+      "Bash(rsync:*)",
+      "Bash(diff:*)"
     ],
     "deny": []
   }
