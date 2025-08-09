@@ -55,7 +55,8 @@
       "Bash(magick:*)",
       "Bash(del \"C:\\Users\\JosephGettings\\BLU\\interface\\panels\\about.lua\")",
       "Bash(rsync:*)",
-      "Bash(diff:*)"
+      "Bash(diff:*)",
+      "Bash(git log:*)"
     ],
     "deny": []
   }
