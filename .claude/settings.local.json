@@ -56,7 +56,9 @@
       "Bash(del \"C:\\Users\\JosephGettings\\BLU\\interface\\panels\\about.lua\")",
       "Bash(rsync:*)",
       "Bash(diff:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }
