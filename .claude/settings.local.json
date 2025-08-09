@@ -58,7 +58,8 @@
       "Bash(diff:*)",
       "Bash(git log:*)",
       "Bash(git cherry-pick:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(./copy_to_wow.bat)"
     ],
     "deny": []
   }
