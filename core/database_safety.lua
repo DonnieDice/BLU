@@ -9,7 +9,6 @@ local BLU = _G["BLU"]
 
 -- Initialize database with defaults
 function BLU:InitializeDatabase()
-    BLU:PrintDebug("BLU:InitializeDatabase called.")
     BLUDB = BLUDB or {}
     BLUDB.profiles = BLUDB.profiles or {}
     BLUDB.global = BLUDB.global or {}
@@ -20,6 +19,9 @@ function BLU:InitializeDatabase()
     
     -- Set active database reference
     self.db = BLUDB.profiles[charKey]
+    
+    -- Apply defaults
+    self:ApplyDefaults()
     
     return self.db
 end
@@ -104,7 +106,76 @@ function BLU:SetDB(path, value)
     return true
 end
 
-
+-- Apply default settings
+function BLU:ApplyDefaults()
+    local defaults = {
+        enabled = true,
+        volume = 100,
+        debug = false,
+        testMode = false,
+        
+        -- Event defaults
+        events = {
+            levelup = {enabled = true, sound = "default", volume = 100},
+            achievement = {enabled = true, sound = "default", volume = 100},
+            quest = {enabled = true, sound = "default", volume = 100},
+            reputation = {enabled = true, sound = "default", volume = 90},
+            honor = {enabled = true, sound = "default", volume = 90},
+            battlepet = {enabled = true, sound = "default", volume = 85},
+            renown = {enabled = true, sound = "default", volume = 85},
+            tradingpost = {enabled = true, sound = "default", volume = 80},
+            delve = {enabled = true, sound = "default", volume = 80}
+        },
+        
+        -- Module defaults
+        modules = {
+            levelup = true,
+            achievement = true,
+            quest = true,
+            reputation = false,
+            honor = true,
+            battlepet = true,
+            renown = true,
+            tradingpost = true,
+            delve = false
+        },
+        
+        -- Performance defaults
+        preloadSounds = false,
+        cacheSize = 50,
+        lazyLoading = true,
+        
+        -- Advanced defaults
+        soundPooling = false,
+        asyncLoading = false,
+        soundQueueSize = 3,
+        fadeTime = 200,
+        moduleTimeout = 5,
+        debugLevel = 0,
+        debugToConsole = false,
+        debugToFile = false,
+        profiling = false,
+        
+        -- Experimental defaults
+        positionalAudio = false,
+        dynamicCompression = false,
+        aiSounds = false,
+        weakAurasIntegration = false,
+        discordIntegration = false,
+        
+        -- Profile defaults
+        currentProfile = "Default",
+        autoSaveProfile = true,
+        showProfileDiff = false,
+        
+        -- UI defaults
+        playInBackground = false,
+        randomVariations = false
+    }
+    
+    -- Merge defaults with existing settings
+    self:MergeDefaults(self.db, defaults)
+end
 
 -- Recursively merge defaults
 function BLU:MergeDefaults(target, defaults)
@@ -164,9 +235,7 @@ end
 
 -- Profile management
 function BLU:CreateProfile(name)
-    if not name or name == "" then
-        return false
-    end
+    if not name or name == "" then return false end
     
     BLUDB.profiles = BLUDB.profiles or {}
     BLUDB.profiles[name] = BLUDB.profiles[name] or {}
@@ -266,9 +335,7 @@ end
 -- Profile serialization for import/export
 function BLU:SerializeProfile(name)
     local profile = BLUDB.profiles[name or self:GetDB("currentProfile")]
-    if not profile then
-        return ""
-    end
+    if not profile then return "" end
     
     -- Simple serialization (could be enhanced with LibSerialize)
     local str = "BLU_PROFILE_v1:"
@@ -354,13 +421,9 @@ function BLU:ShowImportDialog()
     StaticPopup_Show("BLU_IMPORT_PROFILE")
 end
 
-function BLU:ShowCharacterCopyDialog()
-    print("|cff00ccffBLU:|r Character copy feature coming soon")
+local DatabaseSafety = {}
+function DatabaseSafety:Init()
+    -- The safety functions are already on the BLU object.
+    BLU:PrintDebug("Database safety layer initialized")
 end
-
-local Database = {}
-function Database:Init()
-    BLU:InitializeDatabase()
-    BLU:PrintDebug("Database module initialized")
-end
-BLU.Modules["database"] = Database
+BLU.Modules["database_safety"] = DatabaseSafety
