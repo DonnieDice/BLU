@@ -1,4 +1,4 @@
-## Interface: 110002
+## Interface: 40400
 ## Title: BLU | Better Level-Up!
 ## Notes: Replace default level-up sounds with iconic sounds from your favorite games!
 ## Author: DonnieDice
@@ -25,15 +25,8 @@ Libs\AceGUI-3.0\AceGUI-3.0.xml
 Libs\AceConfig-3.0\AceConfig-3.0.xml
 
 # Data files - LOAD ORDER CRITICAL
-# 1. Localization (defines BLU_L strings)
 data\localization.lua
-# 2. Sounds (defines sounds tables)
 data\sounds.lua
-# 3. Core (creates BLU addon - MUST be before options.lua)
 data\core.lua
-# 4. Options (references BLU.defaults, BLU.options)
 data\options.lua
-# 5. Utils (adds methods to BLU)
 data\utils.lua
-# 6. Battle Pets (retail only)
-data\battlepets.lua
